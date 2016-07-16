@@ -12,7 +12,7 @@ module.exports = function(grunt) {
     CSSMODELING
     ==========================*/
     configObj.cssmodeling = configObj.cssmodeling || {};
-    configObj.cssmodeling["cssmodeling"] = {
+    configObj.cssmodeling["cssmodeling_less"] = {
         files: {
             'dist':
             [
@@ -28,6 +28,22 @@ module.exports = function(grunt) {
         }
     };
 
+    configObj.cssmodeling["cssmodeling_scss"] = {
+        files: {
+            'dist':
+            [
+                'cssmodeling_col_12_quartered_viewport.json'
+            ]
+        },
+        options: {
+            resets:[
+                // 'cssmodeling/_resets/**/*.css'
+            ],
+            type:"scss",
+            var_prefix:"v-"
+        }
+    };
+
     configObj.watch = configObj.watch || {};
     configObj.watch["cssmodeling"] = {
         files:[
@@ -39,7 +55,7 @@ module.exports = function(grunt) {
 
     grunt.initConfig( configObj );
     grunt.registerTask( 'default' , [
-        'cssmodeling:cssmodeling'
+        'cssmodeling'
     ] );
 
 }
